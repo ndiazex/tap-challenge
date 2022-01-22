@@ -1,8 +1,8 @@
 const express = require('express')
-const createGame = require('./findOrCreate')
+const findOrCreate = require('./findOrCreate')
 const router = express.Router()
 
-router.get('/:gameId?', createGame)
+router.get('/:userName?/:gameId?', findOrCreate)
 
 module.exports = router
 

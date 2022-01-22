@@ -14,22 +14,22 @@ class Game {
     try {
       const docRef = db.collection('games')
       const newGame = await docRef.add({
-        userName,
-        startDate: Timestamp.fromDate(new Date())
+        score: 0,
+        startDate: Timestamp.fromDate(new Date()),
+        userName
       })
-      console.log("🚀 ~ file: Game.js ~ line 20 ~ Game ~ create ~ newGame", newGame.id)
       return newGame.id
     } catch (err) {
-    console.log("🚀 ~ file: Game.js ~ line 23 ~ Game ~ create ~ err", err)
+      console.log(err)
     }
   }
 
   async findById(gameId) {
     try {
       const game = await db.doc(`games/${gameId}`).get()
-      if (game) return game.data()
+      if (game.data()) return game.data()
     } catch (error) {
-      console.log("🚀 ~ file: Game.js ~ line 29 ~ Game ~ findById ~ error", error)
+      console.log(err)
     }
   }
 }
